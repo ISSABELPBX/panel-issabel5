@@ -2,6 +2,7 @@
 Panel Operador opensource para Issabel 5 
 
 Esta version de Panel operador fue actualizada para trabajar en Issabel 5 
+
 *****Instalacion******
 Pso 1-  Subir carpeta "control_panel"  en la ruta /var/www/html/modules y asignar permisos usuario asterisk
 
