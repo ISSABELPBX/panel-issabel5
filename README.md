@@ -10,10 +10,12 @@ Paso 2- asignar en sqlite menu y permisos
 
 sqlite3 /var/www/db/acl.db
 INSERT INTO acl_resource (name, description) VALUES ('control_panel', 'Issabel Panel');
+
 salir con contrl +  D
 
 sqlite3 /var/www/db/menu.db
 INSERT INTO menu (id, IdParent, Link, Name, Type, order_no) VALUES ('control_panel', 'pbxconfig', '', 'Issabel Panel', 'module', 8);
+
 salir con contrl +  D
 
 Paso 3- en Sitema , ir a permisos de grupo "administrador" ingresar a "pbxconfig" y asignar permisos para "control_panel"
