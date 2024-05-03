@@ -19,3 +19,5 @@ INSERT INTO menu (id, IdParent, Link, Name, Type, order_no) VALUES ('control_pan
 salir con contrl +  D
 
 Paso 3- en Sitema , ir a permisos de grupo "administrador" ingresar a "pbxconfig" y asignar permisos para "control_panel"
+
+Nota: las mejoras del codigo fueron realizadas por el chileno JULIO PACHECO
