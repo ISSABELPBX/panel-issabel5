@@ -214,22 +214,10 @@ class paloControlPanelStatus extends paloInterfaceSSE
     $pACL = new paloACL($pDB);
     $user = $_SESSION['issabel_user'];
 
-        // Recoger todas las extensiones, con todas las tecnologías
-        if ($user !== "admin") {
-            $recordset = $this->_db->fetchTable(
-            "SELECT devices.dial AS channel, devices.tech AS tech, devices.id AS extension, devices.description AS description
-            FROM devices
-            INNER JOIN pymecall_panel_acl ON devices.id = pymecall_panel_acl.extension WHERE pymecall_panel_acl.user = '$user'
-            ORDER BY CAST(devices.id AS SIGNED)",
-            TRUE
-        );
-        }
-        else {
-        	$recordset = $this->_db->fetchTable(
-                "SELECT dial AS channel, tech, id AS extension, description FROM devices ORDER BY CAST(extension AS SIGNED)",
-                TRUE);
-        }
 
+        $recordset = $this->_db->fetchTable(
+            "SELECT dial AS channel, tech, id AS extension, description FROM devices ORDER BY CAST(extension AS SIGNED)",
+            TRUE);
         if (is_array($recordset)) foreach ($recordset as $tupla) {
         	$phonestate = array(
                 'channel'           =>  $tupla['channel'],
@@ -259,21 +247,9 @@ class paloControlPanelStatus extends paloInterfaceSSE
         
         // Leer y clasificar todas las colas conocidas
 
-        if ($user !== "admin") {
-            $recordset = $this->_db->fetchTable(
-            "SELECT queues_config.extension AS extension, queues_config.descr AS description
-            FROM queues_config
-            INNER JOIN pymecall_panel_acl ON queues_config.extension = pymecall_panel_acl.queue WHERE pymecall_panel_acl.user = '$user'
-            ORDER BY CAST(queues_config.extension AS SIGNED)",
-            TRUE
-        );
-        }
-        else {
-            $recordset = $this->_db->fetchTable(
-                "SELECT extension, descr AS description FROM queues_config ORDER BY extension",
-                TRUE);
-        }
-
+        $recordset = $this->_db->fetchTable(
+            "SELECT extension, descr AS description FROM queues_config ORDER BY extension",
+            TRUE);
         if (is_array($recordset)) foreach ($recordset as $tupla) {
         	$this->_internalState['queues'][$tupla['extension']] = array(
                 'extension'     =>  $tupla['extension'],
