@@ -1701,7 +1701,11 @@ function refreshAgents(member) {
           // Actualizar el contenido de cada div
           var status = memberStatus(item.Status, item.Paused);
           var html = status.circleHTML; // Aquí utilizamos el HTML del círculo
-          html += '<span class="agent-info">'+status.statusImage+''+memberNumber+' - '+ item.MemberName +'</span><br>';
+          if (memberNumber.length > "8"){
+          	html += '<span class="agent-info">'+status.statusImage+'' +item.MemberName +'</span><br>';
+          } else {
+          	html += '<span class="agent-info">'+status.statusImage+''+memberNumber+' - '+ item.MemberName +'</span><br>';
+          }
           divToUpdate.innerHTML = html;
         });
       }
